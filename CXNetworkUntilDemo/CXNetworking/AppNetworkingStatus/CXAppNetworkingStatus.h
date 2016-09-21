@@ -13,6 +13,8 @@
 // 网络是否连通
 @property (nonatomic,  assign, readonly) BOOL isReachable;
 
+@property (nonatomic, copy) NSString * ipAndHost;
+
 + (instancetype)sharedInstance;
 
 

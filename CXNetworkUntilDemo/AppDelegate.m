@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "RequestHeader.h"
+#import "CXAppNetworkingStatus.h"
 @interface AppDelegate ()
 
 @end
@@ -15,9 +17,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    AFNetworkReachabilityManager * manager = [AFNetworkReachabilityManager sharedManager];
-//    [manager startMonitoring];
 
+    // 程序启动的时候,需要通过下列方法,设置API的ip和host
+    [CXAppNetworkingStatus sharedInstance].ipAndHost = IPANDHOST;
     // Override point for customization after application launch.
     return YES;
 }

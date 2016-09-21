@@ -10,8 +10,8 @@
 #import "AFNetworking.h"
 #import "CXNetworkingConfiguration.h"
 #import "NSString+URLString_Append.h"
-#import "RequestHeader.h"     // 里面存放的是IP和端口号,方面统一拼接
 #import "NSURLRequest+CXNetworkingMethods.h"
+#import "CXAppNetworkingStatus.h"
 
 
 @interface CXRequestGenerator ()
@@ -34,26 +34,26 @@
 #pragma mark - public   methods
     // IP是其中的IP地址
 - (NSURLRequest *)generateGETRequestWithrequestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName {
-    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:IPANDHOST  methodName:methodName];
+    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:[CXAppNetworkingStatus sharedInstance].ipAndHost   methodName:methodName];
     NSMutableURLRequest * request = [self.httpRequestSerializer requestWithMethod:@"GET" URLString:urlstring parameters:requestParams error:nil];
     request.requestParams = requestParams;
     return request;
     
 }
 - (NSURLRequest *)generatePOSTRequestWithrequestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName {
-    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:IPANDHOST  methodName:methodName];
+    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:[CXAppNetworkingStatus sharedInstance].ipAndHost   methodName:methodName];
     NSMutableURLRequest * request = [self.httpRequestSerializer requestWithMethod:@"POST" URLString:urlstring parameters:requestParams error:nil];
     request.requestParams = requestParams;
     return request;
 }
 - (NSURLRequest *)generatePutRequestWithrequestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName {
-    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:IPANDHOST  methodName:methodName];
+    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:[CXAppNetworkingStatus sharedInstance].ipAndHost   methodName:methodName];
     NSMutableURLRequest * request = [self.httpRequestSerializer requestWithMethod:@"PUT" URLString:urlstring parameters:requestParams error:nil];
     request.requestParams = requestParams;
     return request;
 }
 - (NSURLRequest *)generateDeleteRequestWithrequestParams:(NSDictionary *)requestParams methodName:(NSString *)methodName {
-    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:IPANDHOST  methodName:methodName];
+    NSString * urlstring = [NSString urlStringAppendWithBaseUrl:[CXAppNetworkingStatus sharedInstance].ipAndHost   methodName:methodName];
     NSMutableURLRequest * request = [self.httpRequestSerializer requestWithMethod:@"DELETE" URLString:urlstring parameters:requestParams error:nil];
     request.requestParams = requestParams;
     return request;
